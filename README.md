@@ -1,5 +1,6 @@
-### Discord Bot using Discord.js
+## Discord Bot using Discord.js
 
+<hr/>
 Guild = Server
 
 Make the Bot online:
