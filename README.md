@@ -1,4 +1,4 @@
-#### Note
+### Discord Bot using Discord.js
 
 Guild = Server
 
@@ -27,3 +27,7 @@ or
 ```sh
 npm run dev
 ```
+
+#### Built With
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
