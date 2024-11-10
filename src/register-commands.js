@@ -1,27 +1,20 @@
 require("dotenv").config();
-const { REST, Routes } = require("discord.js");
+const { REST, Routes, SlashCommandBuilder } = require("discord.js");
 
-const commands = [
-  {
-    name: "hey",
-    description: "Replies with hey!",
-  },
-  {
-    name: "ping",
-    description: "Pong!",
-  },
-];
+const commands = [new SlashCommandBuilder().setName("today").setDescription("Replies with today's date")].map(
+  (command) => command.toJSON()
+);
 
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 
 (async () => {
   try {
-    console.log("Registering slash commands...");
+    console.log("Started refreshing application (/) commands.");
 
     await rest.put(Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: commands });
 
-    console.log("Slash command were registered successfully");
+    console.log("Successfully reloaded application (/) commands.");
   } catch (error) {
-    console.log(`There was an error: $${error}`);
+    console.error(error);
   }
 })();
