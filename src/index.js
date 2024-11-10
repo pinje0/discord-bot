@@ -36,6 +36,25 @@ client.on("guildMemberAdd", async (member) => {
   } else {
     console.error("Role 'Kōshū - 公衆' not found.");
   }
+
+  // Send a message to the '#in' channel (if it exists)
+  const inChannel = member.guild.channels.cache.find((ch) => ch.name === "in");
+  if (inChannel) {
+    inChannel.send(`**${member.user.tag}** has joined the server!`); // Make the username and tag bold
+  } else {
+    console.error("Channel '#in' not found.");
+  }
+});
+
+// Event for member leaving the server
+client.on("guildMemberRemove", (member) => {
+  // Fetch the specific channel by name or ID
+  const channel = member.guild.channels.cache.find((ch) => ch.name === "out");
+  if (channel) {
+    channel.send(`**${member.user.tag}** just left the server.`); // Make the username and tag bold
+  } else {
+    console.error("Channel '#out' not found.");
+  }
 });
 
 // Event for command interactions
